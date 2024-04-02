@@ -3,12 +3,15 @@ import ReactDOM from "react-dom/client";
 import App from "./components/App/App.jsx";
 import "modern-normalize";
 import { store } from "./redux/store.js";
+import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );
