@@ -1,0 +1,16 @@
+.container {
+  padding: 20px;
+  width: 300px;
+}
+
+.errorText {
+  color: red;
+  margin: 5px 0;
+  font-weight: 500;
+}
+
+.loadingText {
+  margin: 5px 0;
+  font-weight: 500;
+
+}
