@@ -9,7 +9,8 @@ import { register } from "../../redux/auth/operations";
 export default function RegistrationForm() {
   const dispatch = useDispatch();
   const nameFieldId = useId();
-  const numberFieldId = useId();
+  const emailFieldId = useId();
+  const passwordFieldId = useId();
 
   const handleSubmit = (values, actions) => {
     dispatch(register(values));
@@ -58,12 +59,12 @@ export default function RegistrationForm() {
         </div>
 
         <div className={css.wrapper}>
-          <label htmlFor={numberFieldId}>Email</label>
+          <label htmlFor={emailFieldId}>Email</label>
           <Field
             className={css.input}
             type="email"
             name="email"
-            id={numberFieldId}
+            id={emailFieldId}
           ></Field>
           <ErrorMessage
             className={css["error-text"]}
@@ -73,12 +74,12 @@ export default function RegistrationForm() {
         </div>
 
         <div className={css.wrapper}>
-          <label htmlFor={numberFieldId}>Password</label>
+          <label htmlFor={passwordFieldId}>Password</label>
           <Field
             className={css.input}
             type="password"
             name="password"
-            id={numberFieldId}
+            id={passwordFieldId}
           ></Field>
           <ErrorMessage
             className={css["error-text"]}

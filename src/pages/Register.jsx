@@ -1,17 +1,13 @@
 import PageTitle from "../components/PageTitle/PageTitle";
 import RegistrationForm from "../components/RegistrationForm/RegistrationForm";
 import { useSelector } from "react-redux";
-import { Toaster, toast } from "react-hot-toast";
 import { selectIsError, selectIsLoading } from "../redux/auth/selectors";
 import { TailSpin } from "react-loader-spinner";
+import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 
 export default function Register() {
   const error = useSelector(selectIsError);
   const loading = useSelector(selectIsLoading);
-
-  if (error) {
-    toast.error("Something went wrong, please try again");
-  }
 
   return (
     <div>
@@ -35,7 +31,7 @@ export default function Register() {
           />
         </div>
       )}
-      <Toaster position="top-center" />
+      {error && <ErrorMessage />}
     </div>
   );
 }

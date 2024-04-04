@@ -1,17 +1,14 @@
 import LoginForm from "../components/LoginForm/LoginForm";
 import PageTitle from "../components/PageTitle/PageTitle";
-import { Toaster, toast } from "react-hot-toast";
 import { TailSpin } from "react-loader-spinner";
 import { useSelector } from "react-redux";
-import { selectIsError, selectIsLoading } from "../redux/auth/selectors";
+import { selectIsLoading, selectIsError } from "../redux/auth/selectors";
+import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 
 export default function Login() {
-  const error = useSelector(selectIsError);
   const loading = useSelector(selectIsLoading);
+  const error = useSelector(selectIsError);
 
-  if (error) {
-    toast.error("Something went wrong, please try again");
-  }
   return (
     <div>
       <PageTitle>Log in to your account</PageTitle>
@@ -34,7 +31,7 @@ export default function Login() {
           />
         </div>
       )}
-      <Toaster position="top-center" />
+      {error && <ErrorMessage />}
     </div>
   );
 }
