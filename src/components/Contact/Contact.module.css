@@ -2,12 +2,12 @@
   display: flex;
   padding: 10px;
   justify-content: space-between;
+
 }
 
 .wrapper {
   display: flex;
   flex-wrap: wrap;
-
   row-gap: 5px;
 }
 
@@ -22,6 +22,18 @@
 }
 
 .btn {
-  height: 50%;
-  align-self: center;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  margin-left: auto;
+  border-radius: 4px;
+  padding: 4px 10px;
+  background-color: #3f51b5;
+  color: #fff;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #303f9f;
 }

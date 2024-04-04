@@ -3,11 +3,11 @@
   padding-left: 0;
   display: flex;
   flex-wrap: wrap;
-  row-gap: 10px;
+  gap: 10px;
 }
 
 .list-item {
-  width: 100%;
+  width: 50%;
   border: 1px solid #000000;
   border-radius: 5px;
 }
