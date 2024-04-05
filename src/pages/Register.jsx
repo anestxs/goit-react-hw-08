@@ -1,12 +1,10 @@
 import PageTitle from "../components/PageTitle/PageTitle";
 import RegistrationForm from "../components/RegistrationForm/RegistrationForm";
 import { useSelector } from "react-redux";
-import { selectIsError, selectIsLoading } from "../redux/auth/selectors";
+import { selectIsLoading } from "../redux/auth/selectors";
 import { TailSpin } from "react-loader-spinner";
-import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
 
 export default function Register() {
-  const error = useSelector(selectIsError);
   const loading = useSelector(selectIsLoading);
 
   return (
@@ -31,7 +29,6 @@ export default function Register() {
           />
         </div>
       )}
-      {error && <ErrorMessage />}
     </div>
   );
 }

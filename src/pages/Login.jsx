@@ -2,12 +2,10 @@ import LoginForm from "../components/LoginForm/LoginForm";
 import PageTitle from "../components/PageTitle/PageTitle";
 import { TailSpin } from "react-loader-spinner";
 import { useSelector } from "react-redux";
-import { selectIsLoading, selectIsError } from "../redux/auth/selectors";
-import ErrorMessage from "../components/ErrorMessage/ErrorMessage";
+import { selectIsLoading } from "../redux/auth/selectors";
 
 export default function Login() {
   const loading = useSelector(selectIsLoading);
-  const error = useSelector(selectIsError);
 
   return (
     <div>
@@ -31,7 +29,6 @@ export default function Login() {
           />
         </div>
       )}
-      {error && <ErrorMessage />}
     </div>
   );
 }
