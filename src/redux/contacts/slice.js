@@ -1,11 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  fetchContacts,
-  deleteContact,
-  addContact,
-  editContactName,
-  editContactPhone,
-} from "./operations";
+import { fetchContacts, deleteContact, addContact } from "./operations";
 
 const contactsSlice = createSlice({
   name: "contacts",
@@ -13,6 +7,7 @@ const contactsSlice = createSlice({
     items: [],
     isLoading: false,
     isError: null,
+    isModalOpen: false,
   },
   extraReducers: (builder) =>
     builder
@@ -51,34 +46,6 @@ const contactsSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(addContact.rejected, (state) => {
-        state.isError = true;
-        state.isLoading = false;
-      })
-      .addCase(editContactName.pending, (state) => {
-        state.isError = false;
-        state.isLoading = true;
-      })
-      .addCase(editContactName.fulfilled, (state, action) => {
-        state.items = state.items.map((item) =>
-          item.id === action.payload.id ? action.payload : item
-        );
-        state.isLoading = false;
-      })
-      .addCase(editContactName.rejected, (state) => {
-        state.isError = true;
-        state.isLoading = false;
-      })
-      .addCase(editContactPhone.pending, (state) => {
-        state.isError = false;
-        state.isLoading = true;
-      })
-      .addCase(editContactPhone.fulfilled, (state, action) => {
-        state.items = state.items.map((item) =>
-          item.id === action.payload.id ? action.payload : item
-        );
-        state.isLoading = false;
-      })
-      .addCase(editContactPhone.rejected, (state) => {
         state.isError = true;
         state.isLoading = false;
       }),
