@@ -3,7 +3,11 @@ import ContactForm from "../components/ContactForm/ContactForm";
 import ContactList from "../components/ContactList/ContactList";
 import { useSelector } from "react-redux";
 import { Toaster, toast } from "react-hot-toast";
-import { selectError, selectLoading } from "../redux/contacts/selectors";
+import {
+  selectAllContacts,
+  selectError,
+  selectLoading,
+} from "../redux/contacts/selectors";
 import { TailSpin } from "react-loader-spinner";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -14,6 +18,7 @@ export default function Contacts() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectLoading);
   const isError = useSelector(selectError);
+  const contacts = useSelector(selectAllContacts);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -45,7 +50,7 @@ export default function Contacts() {
           />
         </div>
       )}
-      <SearchBox></SearchBox>
+      {contacts.length > 1 && <SearchBox />}
       <ContactList />
       <Toaster position="top-center" />
     </div>
