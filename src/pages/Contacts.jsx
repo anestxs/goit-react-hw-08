@@ -5,19 +5,28 @@ import { useSelector } from "react-redux";
 import { Toaster, toast } from "react-hot-toast";
 import { selectError, selectLoading } from "../redux/contacts/selectors";
 import { TailSpin } from "react-loader-spinner";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchContacts } from "../redux/contacts/operations";
+import SearchBox from "../components/SearchBox/SearchBox";
 
 export default function Contacts() {
-  const error = useSelector(selectError);
-  const loading = useSelector(selectLoading);
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectLoading);
+  const isError = useSelector(selectError);
 
-  if (error) {
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
+  if (isError) {
     toast.error("Something went wrong, please try again");
   }
   return (
     <div>
       <PageTitle>Your contacts</PageTitle>
       <ContactForm />
-      {loading && (
+      {isLoading && (
         <div
           style={{
             display: "flex",
@@ -36,6 +45,7 @@ export default function Contacts() {
           />
         </div>
       )}
+      <SearchBox></SearchBox>
       <ContactList />
       <Toaster position="top-center" />
     </div>

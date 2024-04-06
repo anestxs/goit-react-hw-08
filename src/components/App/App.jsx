@@ -5,12 +5,12 @@ import { selectIsRefreshing } from "../../redux/auth/selectors";
 import { Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Layout from "../Layout/Layout";
-import RestrictedRoot from "../RestrictedRoot/RestrictedRoot";
-import PrivateRoot from "../PrivateRoute/PrivateRoute";
+import RestrictedRoute from "../RestrictedRoute/RestrictedRoute";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import { TailSpin } from "react-loader-spinner";
 
 const HomePage = lazy(() => import("../../pages/Home"));
-const RegisterPage = lazy(() => import("../../pages/Register"));
+const RegisterPage = lazy(() => import("../../pages/Registration"));
 const LoginPage = lazy(() => import("../../pages/Login"));
 const ContactsPage = lazy(() => import("../../pages/Contacts"));
 
@@ -66,15 +66,15 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route
               path="/register"
-              element={<RestrictedRoot component={<RegisterPage />} />}
+              element={<RestrictedRoute component={<RegisterPage />} />}
             />
             <Route
               path="/login"
-              element={<RestrictedRoot component={<LoginPage />} />}
+              element={<RestrictedRoute component={<LoginPage />} />}
             />
             <Route
               path="/contacts"
-              element={<PrivateRoot component={<ContactsPage />} />}
+              element={<PrivateRoute component={<ContactsPage />} />}
             />
           </Routes>
         </Suspense>
